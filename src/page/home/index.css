@@ -1,0 +1,140 @@
+.topbar {
+  height: 50px;
+  padding: 0 10px;
+  background: #ff7e00;
+  display: flex;
+  align-items: center;
+}
+
+.topbar-logo {
+  display: block;
+  width: 110px;
+  height: 40px;
+  background: url('https://r.plures.net/plu/images/small-longzhu-logo.png') no-repeat;
+  background-size: 100% 100%;
+}
+
+.topbar-right {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: #ccc;
+}
+
+.navbar {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 2px;
+}
+
+.navbar li {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar li span {
+  color: #000;
+  border-bottom: 2px solid #f3f4f6;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar li a {
+  display: block;
+  height: 100%;
+}
+
+.navbar li.active span {
+  color: #ff7e00;
+  border-bottom: #ff7e00 2px solid;
+}
+
+.home-swpier .swpier {
+  width: 100%;
+  height: 140px;
+}
+
+.home-swpier .swpier .swiper-slide {
+  width: 100%;
+  height: 140px !important;
+  background: #ccc;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.adverts {
+  width: 100%;
+  height: 140px;
+  margin-top: 20px;
+}
+
+.live {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.live-title{
+  margin-bottom: 10px;
+  width: 100%;
+  height: 30px;
+}
+
+.live-title-hot {
+  margin-left: 10px;
+}
+
+.live-title-ico {
+  display: block;
+  height: 30px;
+  width: 30px;
+}
+
+.live-title-name{
+  margin-left: 10px;
+  line-height: 30px;
+  font-weight: bold;
+}
+
+.live-warp{
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.live-warp-container{
+  display: block;
+  height: 136px;
+  width: 170px;
+}
+
+.live-warp-ico{
+  display: block;
+  height: 96px;
+  width: 100%;
+}
+
+.live-warp-name{
+  width: 120px;
+  height: 30px;
+  line-height: 30px;
+}
+

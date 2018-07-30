@@ -1,0 +1,31 @@
+.game {
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.game-list {
+  width: 33.33%;
+  height: 144px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-content {
+  width: 70px;
+  display: block;
+}
+
+.game-content img {
+  display: block;
+  height: 70px;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.game-content-font {
+  display: block;
+  padding-top: 10px;
+  text-align: center;
+}
