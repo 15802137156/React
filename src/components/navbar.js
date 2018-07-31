@@ -20,9 +20,13 @@ class Navbar extends Component {
   componentDidMount() {
     this.init();
     this.pubsubGameId = PubSub.subscribe('gameId', (argum, data) => {
-      this.setState({
-        source: false
-      })
+      if (data === true) {
+        window.location.reload();
+      } else {
+        this.setState({
+          source: false
+        })
+      }
     })
   }
 
@@ -32,6 +36,9 @@ class Navbar extends Component {
 
   init() {
     var href = window.location.hash.slice(2);
+    if (href.indexOf('List') === 0){
+      href = 'List';
+    }
     switch(href){
       case 'Game':
         this.setState({

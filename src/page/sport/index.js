@@ -51,45 +51,67 @@ class Sport extends Component {
 
   async init(leagueId) {
     await axios.get(`http://sportsapi.longzhu.com/sportv2/EventNoticeListForIndex?leagueId=${leagueId}&device=8&packageId=1&utm_sr=chanel_2&version=3.9.3`).then((res) => {
+      var array = [];
+      res.data.soon.forEach((item) => {
+        array.push(this.formatDate(item.start, 2));
+      });
+      var dateArray = Array.from(new Set(array));
+     
+      var lastArray = [];
+      dateArray.forEach((ele) => {
+        var itemArray = [];
+        res.data.soon.forEach((item) => {
+          if(ele === this.formatDate(item.start, 2)) {
+            itemArray.push(item);
+          }
+        });
+        lastArray.push(itemArray)
+      })
       this.setState({
-        sportList: res.data.soon
+        sportList: lastArray
       })
     })
   }
 
-  getTargetHandle(argum) {
-    this.init(argum.target);
+  getTargetHandle(goal) {
+    this.init(goal.target);
   }
 
   render() {
     var listArray = [];
     if (this.state.sportList.length) {
       this.state.sportList.forEach((item) => {
-        listArray.push(
-          <div key={item.matchId}>
-            <div className="sportschedule-time">{this.formatDate(item.start, 2)}</div>
-            <div className="sportschedule-card">
+        var itemsList = [];
+        item.forEach((argum) => {
+          itemsList.push(
+            <div className="sportschedule-card" key={argum.matchId}>
                 <div className="card-bd">
                   <div className="card-team-info">
-                    <div className="sport-title ellipsis">{this.formatDate(item.start, 1)} {item.leagueName} {item.roundName}</div>
+                    <div className="sport-title ellipsis">{this.formatDate(argum.start, 1)} {argum.leagueName} {argum.roundName}</div>
                     <div className="sport-team">
-                      <img src={item.teamALogo} alt={item.teamAName} />
-                      <span>{item.teamAName}</span>
+                      <img src={argum.teamALogo} alt={argum.teamAName} />
+                      <span>{argum.teamAName}</span>
                     </div>
                     <div className="sport-team">
-                      <img src={item.teamBLogo} alt={item.teamBName} />
-                      <span>{item.teamBName}</span>
+                      <img src={argum.teamBLogo} alt={argum.teamBName} />
+                      <span>{argum.teamBName}</span>
                     </div>
                   </div>
                   <div className="card-room-info">
                     <div className="btn-appointment">
-                      <img src={item.topRecommend.roomLogo} alt={item.topRecommend.userId} />
+                      <img src={argum.topRecommend.roomLogo} alt={argum.topRecommend.userId} />
                       <span>预约</span>
                     </div>
                   </div>
                 </div>
             </div>
-          </div>
+          )
+        })
+        listArray.push(
+        <div key={item[0].start}>
+          <div className="sportschedule-time">{this.formatDate(item[0].start, 2)}</div>
+          {itemsList}
+        </div>
         )
       })
     } else {

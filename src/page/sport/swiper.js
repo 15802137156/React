@@ -9,7 +9,7 @@ class Swpier extends Component {
     super(props);
     this.state = {
       swpierList: [],
-      tab: '',
+      tab: 0,
     };
   }
 
@@ -19,7 +19,13 @@ class Swpier extends Component {
 
   async init() {
     await axios.get('http://api.longzhu.com/sport/home/matches?version=3.9.3&device=8&packageId=1').then((res) => {
-      this.setState({
+    var json = {
+      image: 'http://r.plures.net/pt/images/pt/ui/sidenav/pic.png?imageView2/format/webp',
+      name: '全部',
+      target: '0'
+    }
+    res.data.data.unshift(json);
+    this.setState({
         swpierList: res.data.data
       })
     })

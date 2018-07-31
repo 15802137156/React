@@ -25,7 +25,7 @@ class Game extends Component {
 
   getGameId(item, argum) {
     PubSub.publish('gameId', item);
-    this.props.history.push('/List');
+    this.props.history.push(`/List?id=${item.id}&type=1&name=${encodeURI(item.name)}`);
   }
 
   render() {
