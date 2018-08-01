@@ -20,13 +20,18 @@ class List extends Component {
 
   componentWillMount() {
     var href = window.location.hash;
-    var start = href.indexOf('id') + 3;
-    var middle = href.indexOf('&');
-    var end = href.indexOf('name') + 5;
+    var start = href.indexOf('?') + 1;
+    var cc = href.slice(start).split('&');
+    var obj = {};
+    cc.forEach(item => {
+      let bb = item.split('=');
+      obj[bb[0]] = bb[1];
+      Object.assign(obj);
+    })
     this.setState({
-      type: href.slice(middle + 6, end - 6),
-      id: href.slice(start, middle),
-      name: decodeURI(href.slice(end))
+      type: obj.type,
+      id: obj.id,
+      name: decodeURI(obj.name)
     });
   }
 
