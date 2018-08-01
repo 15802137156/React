@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import PubSub from 'pubsub-js';
 
 class Live extends Component {
   getGameId(item, argum) {
-    console.log(item)
-    // this.props.history.push(`/List?id=${item.id}&type=2&name=${encodeURI(item.name)}`);
+    PubSub.publish('gameId', item);
+    this.props.history.push(`/List?id=${item.id}&type=2&name=${encodeURI(item.name)}`);
   }
 
 

@@ -30,7 +30,7 @@ class Home extends Component {
     return (
       <div>
         <Swpier />
-        <Live liveList = {this.state.liveList} />
+        <Live liveList = {this.state.liveList} history={this.props.history} />
         <Adverts/>
       </div>
     );

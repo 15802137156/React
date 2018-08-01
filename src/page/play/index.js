@@ -25,7 +25,7 @@ class Play extends Component {
   render() {
     return (
       <div>
-        <List liveList={this.state.liveList} />
+        <List liveList={this.state.liveList} history={this.props.history} />
       </div>
     )
   }

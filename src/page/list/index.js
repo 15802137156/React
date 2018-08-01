@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PubSub from 'pubsub-js';
 import TypeList from '../../components/typeList';
+import imgURL from '../../images/all-bg.png';
+
 
 class List extends Component {
   constructor(props) {
@@ -11,7 +13,8 @@ class List extends Component {
       type: '',
       name: '',
       startIndex: 0,
-      liveList: []
+      liveList: [],
+      canLoad: false,
     }
   }
 
@@ -35,9 +38,28 @@ class List extends Component {
     var url = `http://stark.longzhu.com/api/streams/search?game=${this.state.id}&tag=${this.state.name}&device=6&packageId=1&sort-by=views&start-index=${this.state.startIndex}&max-result=30`;
     await axios.get(url).then((res) => {
       this.setState({
-        liveList: res.data.data.items[0].streams
-      })
+        liveList: [...this.state.liveList, ...res.data.data.items[0].streams]
+      });
+      if (res.data.data.items[0].streams.length < 30) {
+        this.setState({
+          canLoad: true
+        });
+      }
     });
+  }
+
+  loadingMore() {
+    if(this.state.startIndex + 30 <= this.state.liveList.length) {
+      this.setState({
+        startIndex: this.state.startIndex + 30
+      }, () => {
+        this.init();
+      });
+    } else {
+      this.setState({
+        canLoad: true
+      });
+    }
   }
 
   cameGame(index) {
@@ -53,10 +75,18 @@ class List extends Component {
     return (
       <div>
         <div className="event">
-            {this.state.type === '1' ? <span onClick={this.cameGame.bind(this, 1)}>全部游戏</span> : <span onClick={this.cameGame.bind(this, 2)}>全部娱乐</span>}
+          {this.state.type === '1' ? 
+            <div onClick={this.cameGame.bind(this, 1)} className="title">
+              <img src={imgURL} alt="all-bg" className="all-bg" />全部游戏
+            </div>:
+            <div onClick={this.cameGame.bind(this, 2)} className="title">
+            <img src={imgURL} alt="all-bg" className="all-bg" />全部娱乐
+          </div>
+          }
           <span className="name">{this.state.name}</span>
         </div>
         {<TypeList liveList={this.state.liveList} />}
+        {this.state.canLoad ? <div className="loading-more">(´・ω・)ﾉ没有更多咯~</div> : <div className="loading-more" onClick={this.loadingMore.bind(this)}>请给我更多吧！</div>}
       </div>
     )
   }
