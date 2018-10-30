@@ -16,7 +16,7 @@ class Play extends Component {
 
   async init() {
     await axios.get('http://stark.longzhu.com/api/home?tab=entertainment&version=3.9.3&device=6&packageId=1').then((res) => {
-      this.setState({
+    this.setState({
         liveList: res.data.data.items
       })
     });

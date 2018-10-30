@@ -6,6 +6,8 @@
     "axios": "^0.18.0",
     "jplayer": "^2.9.2",
     "jquery": "^3.3.1",
+    "mobx": "^5.5.2",
+    "mobx-react": "^5.3.6",
     "pubsub-js": "^1.6.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

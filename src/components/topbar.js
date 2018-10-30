@@ -4,7 +4,8 @@ class Topbar extends Component {
   render() {
     return (
         <div className="topbar">
-            <a className="topbar-logo" href="https://m.longzhu.com/index"> </a>
+            {this.props.todoList.length}
+            {/* <a className="topbar-logo" href="https://m.longzhu.com/index"> </a> */}
             {/* <div className="topbar-right"></div> */}
         </div>
     );

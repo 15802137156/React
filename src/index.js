@@ -10,15 +10,17 @@ import List from './page/list/index';
 import Topbar from './components/topbar';
 import Navbar from './components/navbar';
 import './index.css';
+import TodoList from './store/index';
+console.log(TodoList.todos);
 
 class App extends React.Component {
 
   render() {
     return (
       <div>
-        <Topbar />
+        <Topbar todoList ={TodoList.todos} />
         <Navbar />
-        {this.props.children}
+        {/* {this.props.children} */}
       </div>
     );
   }

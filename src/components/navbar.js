@@ -14,6 +14,8 @@ class Navbar extends Component {
   seclectTab(i) {
     this.setState({
       tab: i
+    }, () => {
+      console.log(this.state.tab)
     });
   }
 
