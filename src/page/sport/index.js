@@ -17,6 +17,7 @@ class Sport extends Component {
 
   formatDate(time, index) {
     var result = '';
+    // eslint-disable-next-line
     var t= parseInt(time.slice(6, 19));
     var dt = new Date(t);
     var year = dt.getFullYear();

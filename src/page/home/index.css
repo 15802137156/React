@@ -4,6 +4,7 @@
   background: #ff7e00;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .topbar-logo {
@@ -18,7 +19,10 @@
   height: 34px;
   width: 34px;
   border-radius: 50%;
-  background: #ccc;
+  background: #fafafa;
+  text-align: center;
+  line-height: 34px;
+  color: #f00;
 }
 
 .navbar {

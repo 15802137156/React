@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PubSub from 'pubsub-js';
+import { observer } from "mobx-react";
+import { action } from "mobx";
 
+@observer
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -11,11 +14,12 @@ class Navbar extends Component {
     };
   }
 
+  @action
   seclectTab(i) {
     this.setState({
       tab: i
     }, () => {
-      console.log(this.state.tab)
+      this.props.Tab.clickTab(this.state.tab);
     });
   }
 
